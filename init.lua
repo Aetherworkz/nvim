@@ -33,6 +33,9 @@ require("keymaps")
 -- Bootstrap lazy.nvim
 -- =====================
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+-- this diagnostic gets the lsp to shut up
+---@diagnostic disable-next-line: undefined-field
 if not vim.loop.fs_stat(lazypath) then
   vim.notify("lazy.nvim not found!", vim.log.levels.ERROR)
   return

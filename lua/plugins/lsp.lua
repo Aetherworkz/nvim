@@ -25,7 +25,7 @@ return {
 
     for name, opts in pairs(servers) do
       opts = opts or {}
-      vim.lsp.config(name, opts)   -- modern 0.11+ API
+      vim.lsp.config(name, opts)
       vim.lsp.enable(name)
     end
 
@@ -41,7 +41,7 @@ return {
       callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if client then
-          -- per-client tweaks go here if needed
+          -- placeholder  
         end
       end,
     })

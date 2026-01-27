@@ -41,9 +41,12 @@ return {
         ]],
         keys = {
           { icon = " ", key = "f", desc = "Find File", action = ":Telescope find_files" },
-          { icon = " ", key = "g", desc = "Live Grep", action = ":Telescope live_grep" },
+          { icon = " ", key = "b", desc = "Live Grep", action = ":Telescope live_grep" },
           { icon = " ", key = "r", desc = "Recent Files", action = ":Telescope oldfiles" },
-          { icon = "", key = "b", desc = "Git", action = ":Telescope live_grep" },
+          { icon = "", key = "g", desc = "Git", action = function()
+                require("snacks").lazygit()
+            end
+          },
           { icon = " ", key = "c", desc = "Config", action = ":Telescope find_files cwd=~/.config/nvim" },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
