@@ -53,6 +53,11 @@ return {
       { "<leader>l]", function() vim.diagnostic.jump({ count = 1,  float = true }) end, desc = "Next Diagnostic" },
     })
 
+    -- Snacks
+    wk.add({
+        { "<leader>h", function() Snacks.dashboard.open() end, desc = "Dashboard" },
+    })
+
     -- Splitting and easy nav 
     vim.keymap.set("n", "<Leader>vv", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
     vim.keymap.set("n", "<Leader>vh", "<cmd>split<cr>", { desc = "Horizontal Split" })
