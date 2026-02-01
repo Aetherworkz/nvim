@@ -1,11 +1,10 @@
-
 -- ~/.config/nvim/lua/keymaps.lua
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -------------------------------------------------------------------------------
--- 1. line movement
+-- Line Movement
 -------------------------------------------------------------------------------
 
 -- Normal mode
@@ -21,7 +20,7 @@ map('i', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
 map('i', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
 
 -------------------------------------------------------------------------------
--- 2. File / Folder creation 
+-- File / Folder creation
 -------------------------------------------------------------------------------
 
 -- New file in current file's directory
@@ -45,7 +44,7 @@ vim.keymap.set("n", "<leader>Fn", function()
 end, { desc = "New folder in current file directory" })
 
 -------------------------------------------------------------------------------
--- 3. Line / Whitespace cleanup 
+-- Line / Whitespace cleanup
 -------------------------------------------------------------------------------
 
 vim.keymap.set("n", "<leader>cw", function()
@@ -68,7 +67,7 @@ vim.keymap.set("n", "<leader>cw", function()
 end, { desc = "Clean trailing spaces and extra blank lines" })
 
 -------------------------------------------------------------------------------
--- 4. Easy Replace
+-- Easy Replace
 -------------------------------------------------------------------------------
 
 -- Module
