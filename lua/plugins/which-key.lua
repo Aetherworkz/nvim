@@ -58,9 +58,15 @@ return {
             { "<leader>h", function() Snacks.dashboard.open() end, desc = "Dashboard" },
         })
 
+        -- Normal mode misc.
+        vim.keymap.set("n", "<leader>w", ":update<CR>", { desc = "Save current buffer" })
+        
+        -- Visual mode misc.
+        vim.keymap.set("v", "<leader>s", ":sort<CR>", { desc = "sort highlighted section"})
+
         -- Splitting and easy nav
-        vim.keymap.set("n", "<Leader>vv", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
-        vim.keymap.set("n", "<Leader>vh", "<cmd>split<cr>", { desc = "Horizontal Split" })
+        vim.keymap.set("n", "<leader>vv", "<cmd>vsplit<cr>", { desc = "Vertical Split" })
+        vim.keymap.set("n", "<leader>vh", "<cmd>split<cr>", { desc = "Horizontal Split" })
 
         vim.keymap.set("n", "<C-h>", "<C-w>h")
         vim.keymap.set("n", "<C-j>", "<C-w>j")
