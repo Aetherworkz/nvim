@@ -26,7 +26,7 @@ return {
         wk.add({
             { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
             { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-            { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+            { "<leader>fB", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
             { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
             { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
             { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
