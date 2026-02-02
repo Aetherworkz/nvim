@@ -60,7 +60,7 @@ return {
 
         -- Normal mode misc.
         vim.keymap.set("n", "<leader>w", ":update<CR>", { desc = "Save current buffer" })
-        
+
         -- Visual mode misc.
         vim.keymap.set("v", "<leader>s", ":sort<CR>", { desc = "sort highlighted section"})
 

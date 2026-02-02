@@ -1,4 +1,4 @@
--- ~/.config/nvim/lua/keymaps.lua
+-- lua/keymaps.lua
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -18,6 +18,65 @@ map('v', '<A-k>', ":m '<-2<CR>gv=gv", opts)
 -- Insert mode
 map('i', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
 map('i', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
+
+-------------------------------------------------------------------------------
+-- Floating filesystem shell (real shell, autocomplete works)
+-------------------------------------------------------------------------------
+
+local function fs_shell_popup()
+    local prev_win = vim.api.nvim_get_current_win()
+
+    local dir = vim.fn.expand("%:p:h")
+    if dir == "" then
+        dir = vim.fn.getcwd()
+    end
+
+    local buf = vim.api.nvim_create_buf(false, true)
+
+    -- Window geometry / assignment
+    local width  = math.floor(vim.o.columns * 0.25)
+    local height = math.floor(vim.o.lines * 0.8)
+    local row    = math.floor((vim.o.lines - height) / 2)
+    local col    = vim.o.columns - width - 2
+
+    local win = vim.api.nvim_open_win(buf, true, {
+        relative = "editor",
+        row = row,
+        col = col,
+        width = width,
+        height = height,
+        style = "minimal",
+        border = "rounded",
+    })
+
+    -- Start that thang
+    vim.fn.jobstart(vim.o.shell, {
+        term = true,
+        cwd = dir,
+        on_exit = function()
+            vim.schedule(function()
+                if vim.api.nvim_win_is_valid(win) then
+                    vim.api.nvim_win_close(win, true)
+                end
+                if vim.api.nvim_win_is_valid(prev_win) then
+                    vim.api.nvim_set_current_win(prev_win)
+                end
+            end)
+        end,
+    })
+
+    vim.cmd("startinsert")
+
+    -- Quick exit mappings 'cause I got stuck that one time
+    vim.keymap.set("t", "<Esc>", [[<C-\><C-n>:close<CR>]], { buffer = buf })
+    vim.keymap.set("t", "<C-q>", [[exit<CR>]], { buffer = buf })
+end
+
+vim.keymap.set("n", "<leader>fo", fs_shell_popup, {
+    desc = "Filesystem shell popup",
+    noremap = true,
+    silent = true,
+})
 
 -------------------------------------------------------------------------------
 -- File / Folder creation

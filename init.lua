@@ -28,6 +28,17 @@ vim.opt.incsearch  = true
 vim.opt.scrolloff  = 8
 
 require("keymaps")
+require("theme")
+
+-- =====================
+-- theme application
+-- =====================
+vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyDone",
+    callback = function()
+        require("theme").apply()
+    end,
+})
 
 -- =====================
 -- Autosaving Solution
@@ -66,5 +77,4 @@ require("lazy").setup({
     checker = { enabled = false }, -- no auto internet
     change_detection = { notify = false },
 })
-
 
