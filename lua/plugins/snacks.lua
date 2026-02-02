@@ -67,7 +67,7 @@ return {
                 return {
                     { section = "header" },
 
-                    { padding = 1 },
+                    { padding = 0 },
 
                     {
                         text = { quote, hl = "DashboardQuote" },
